@@ -32,18 +32,8 @@ namespace Microsoft.AspNetCore.JsonPatch
 
         public JsonPatchDocument(List<Operation> operations, IContractResolver contractResolver)
         {
-            if (operations == null)
-            {
-                throw new ArgumentNullException(nameof(operations));
-            }
-
-            if (contractResolver == null)
-            {
-                throw new ArgumentNullException(nameof(contractResolver));
-            }
-
-            Operations = operations;
-            ContractResolver = contractResolver;
+            Operations = operations ?? throw new ArgumentNullException(nameof(operations));
+            ContractResolver = contractResolver ?? throw new ArgumentNullException(nameof(contractResolver));
         }
 
         /// <summary>
@@ -239,12 +229,13 @@ namespace Microsoft.AspNetCore.JsonPatch
             {
                 foreach (var op in Operations)
                 {
-                    var untypedOp = new Operation();
-
-                    untypedOp.op = op.op;
-                    untypedOp.value = op.value;
-                    untypedOp.path = op.path;
-                    untypedOp.from = op.from;
+                    var untypedOp = new Operation
+                    {
+                        op = op.op,
+                        value = op.value,
+                        path = op.path,
+                        from = op.from,
+                    };
 
                     allOps.Add(untypedOp);
                 }
