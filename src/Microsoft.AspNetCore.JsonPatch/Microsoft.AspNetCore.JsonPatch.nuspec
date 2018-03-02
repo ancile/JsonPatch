@@ -11,6 +11,6 @@
     <copyright>Copyright 2018</copyright>
   </metadata>
   <files>
-        <file src="bin\$configuration$\Microsoft.AspNetCore.JsonPatch.dll" target="lib" />
+        <file src="bin\$configuration$\netstandard2.0\Microsoft.AspNetCore.JsonPatch.dll" target="lib" />
     </files>
 </package>
