@@ -197,7 +197,7 @@ namespace Microsoft.AspNetCore.JsonPatch.Internal
             return false;
         }
 
-        private bool TryGetJsonProperty(
+        protected virtual bool TryGetJsonProperty(
             object target,
             IContractResolver contractResolver,
             string segment,
@@ -220,7 +220,7 @@ namespace Microsoft.AspNetCore.JsonPatch.Internal
             return false;
         }
 
-        private bool TryConvertValue(object value, Type propertyType, out object convertedValue)
+        protected virtual bool TryConvertValue(object value, Type propertyType, out object convertedValue)
         {
             var conversionResult = ConversionResultProvider.ConvertTo(value, propertyType);
             if (!conversionResult.CanBeConverted)

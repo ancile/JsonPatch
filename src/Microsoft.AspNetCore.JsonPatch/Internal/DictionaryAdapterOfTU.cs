@@ -208,7 +208,7 @@ namespace Microsoft.AspNetCore.JsonPatch.Internal
             }
         }
 
-        private bool TryConvertKey(string key, out TKey convertedKey, out string errorMessage)
+        protected virtual bool TryConvertKey(string key, out TKey convertedKey, out string errorMessage)
         {
             var conversionResult = ConversionResultProvider.ConvertTo(key, typeof(TKey));
             if (conversionResult.CanBeConverted)
@@ -225,7 +225,7 @@ namespace Microsoft.AspNetCore.JsonPatch.Internal
             }
         }
 
-        private bool TryConvertValue(object value, out TValue convertedValue, out string errorMessage)
+        protected virtual bool TryConvertValue(object value, out TValue convertedValue, out string errorMessage)
         {
             var conversionResult = ConversionResultProvider.ConvertTo(value, typeof(TValue));
             if (conversionResult.CanBeConverted)
